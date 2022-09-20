@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login Or Register</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<style>
+    body {
+        background-image: url('https://i.pinimg.com/564x/9b/f8/9e/9bf89eb4a74167530307ab2b3061d3e1.jpg');
+    }
+
+    h1 {
+        background-color: #000;
+        color: aliceblue;
+    }
+
+    #_email {
+        padding: 1.3em 3em;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 2.5px;
+        font-weight: 500;
+        color: #d6ccc2;
+        background-color: #fff;
+        border: none;
+        border-radius: 45px;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease 0s;
+        cursor: pointer;
+        outline: none;
+    }
+
+    #_pass {
+        padding: 1.3em 3em;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 2.5px;
+        font-weight: 500;
+        color: #d6ccc2;
+        background-color: #fff;
+        border: none;
+        border-radius: 45px;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease 0s;
+        cursor: pointer;
+        outline: none;
+    }
+
+    button {
+        padding: 1.3em 3em;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 2.5px;
+        font-weight: 500;
+        color: #000;
+        background-color: #fff;
+        border: none;
+        border-radius: 45px;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease 0s;
+        cursor: pointer;
+        outline: none;
+        margin-top: 1em;
+        margin-inline: 3.5em;
+
+
+    }
+
+    button:hover {
+        background-color: black;
+        box-shadow: 0px 15px 20px rgba(72, 57, 42);
+        color: #fff;
+        transform: translateY(-1px);
+    }
+
+    #_rname {
+        padding: 1.3em 3em;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 2.5px;
+        font-weight: 500;
+        color: #d6ccc2;
+        background-color: #fff;
+        border: none;
+        border-radius: 45px;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease 0s;
+        cursor: pointer;
+        outline: none;
+    }
+
+    #_remail {
+        padding: 1.3em 3em;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 2.5px;
+        font-weight: 500;
+        color: #d6ccc2;
+        background-color: #fff;
+        border: none;
+        border-radius: 45px;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease 0s;
+        cursor: pointer;
+        outline: none;
+    }
+
+    #_rpass {
+        padding: 1.3em 3em;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 2.5px;
+        font-weight: 500;
+        color: #d6ccc2;
+        background-color: #fff;
+        border: none;
+        border-radius: 45px;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease 0s;
+        cursor: pointer;
+        outline: none;
+    }
+</style>
+
+<body>
+    <div class="container p-5">
+        <h1 class="text-center mb-5 text-uppercase ">GOOD PLANNER</h1>
+        <div class="row">
+            <div class="col-sm-5 bg-light border rounded py-3">
+                <h2 class="text-center text-uppercase">Login</h2>
+                <form action="" method="POST">
+                    <div class="form-group">
+                        <label for="_email">Email</label>
+                        <input type="text" name="user_email" id="_email" class="form-control" placeholder="Email"
+                            rnodeequired>
+                    </div>
+                    <div class="form-group">
+                        <label for="_pass">Password</label>
+                        <input type="password" name="user_pass" id="_pass" class="form-control" placeholder="Password"
+                            required>
+                    </div>
+                    <% if (locals.login_errors) { login_errors.forEach(function(error_msg){ %>
+                        <div class="alert alert-danger" role="alert">
+                            <%= error_msg %>
+                        </div>
+                        <% }); } %>
+                            <button type="submit">Login</button>
+                </form>
+            </div>
+            <div class="col-sm-6 bg-light rounded border py-3 offset-sm-1">
+                <h2 class="text-center text-uppercase">Register</h2>
+
+                <form action="/register" method="POST" novalidate>
+                    <div class="form-group">
+                        <label for="_rname">Name</label>
+                        <input type="text" name="user_name" id="_rname" class="form-control" placeholder="Name"
+                            value="<%= (locals.old_data) ? old_data.user_name : ''; %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="_remail">Email</label>
+                        <input type="email" name="user_email" id="_remail" class="form-control" placeholder="Email"
+                            value="<%= (locals.old_data) ? old_data.user_email : ''; %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="_rpass">Password</label>
+                        <input type="password" name="user_pass" id="_rpass" class="form-control" placeholder="Password"
+                            required>
+                    </div>
+                    <% if (locals.register_error) { register_error.forEach(function(error_msg){ %>
+                        <div class="alert alert-danger" role="alert">
+                            <%= error_msg %>
+                        </div>
+                        <% }); } %>
+                            <button type="submit">Sign Up</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
